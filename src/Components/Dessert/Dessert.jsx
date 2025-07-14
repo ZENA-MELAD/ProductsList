@@ -4,7 +4,7 @@ import ButtonCard from "../ButtonCard/ButtonCard";
 const Dessert = ({ productImage }) => {
   return (
     <div className="w-full relative flex flex-col justify-center items-center mb-8">
-      <div className="w-full h-56 xs:h-32 lg:h-36 overflow-hidden rounded-lg">
+      <div className="w-full h-56 xs:h-40  overflow-hidden rounded-lg">
         <img
           src={productImage}
           alt="image"
