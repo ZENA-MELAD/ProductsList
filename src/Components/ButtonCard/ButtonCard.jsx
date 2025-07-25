@@ -1,31 +1,46 @@
-import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaCircleMinus } from "react-icons/fa6";
 import { FaCirclePlus } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../../redux/CardSlice";
 
-const ButtonCard = () => {
-  const [state, setState] = useState(false);
-  const [count, setCount] = useState(1);
+const ButtonCard = ({ item }) => {
+  const disptch = useDispatch();
+const productInStore=useSelector(state=>state.card.items.find(i=>i.idProduct===item.id))
+const counter=productInStore?productInStore.quantity:0
+const isActive=counter>0
   const handleClick = () => {
-    setState(true);
+    disptch(
+      increment({
+        idProduct: item.id,
+        descrProduct: item.description,
+        priceProduct: item.price,
+      })
+    );
   };
   const handleIncrease = () => {
-    setCount((prev) => prev + 1);
+    disptch(
+      increment({
+        idProduct: item.id,
+        descrProduct: item.description,
+        priceProduct: item.price,
+      })
+    );
   };
-  const handleDecrease=()=>{
-    if(count==1){
-      setState(false);
-       setCount(prev=>prev-1)
-    }
-    else{
-       setCount(prev=>prev-1)
-    }
-   
-  }
+  const handleDecrease = () => {
+      disptch(
+        decrement({
+          idProduct: item.id,
+          descrProduct: item.description,
+          priceProduct: item.price,
+        }))
+  
+  };
+
   return (
     <>
       <button
-        className="w-5/12 xs:w-3/4 sm:w-3/5  p-1.5 xs:p-1 flex justify-center items-center cursor-pointer bg-white rounded-2xl  border border-zinc-500 absolute 
+        className="w-1/2 xs:w-3/4 sm:w-3/5 lg:w-2/3  p-1.5 xs:p-1 flex justify-center items-center cursor-pointer bg-white rounded-2xl  border border-zinc-500 absolute 
       -bottom-4 capitalize text-sm font-medium  xs:text-xs  lg:text-sm
        hover:text-red-700  hover:border hover:border-red-700"
         onClick={handleClick}
@@ -38,14 +53,22 @@ const ButtonCard = () => {
       </button>
       <button
         className={`${
-          state
-            ? "w-5/12 xs:w-3/4 sm:w-3/5 p-1.5 xs:p-1 flex justify-between items-center cursor-pointer rounded-2xl absolute -bottom-4 bg-red-800"
+         isActive
+            ? "w-1/2 xs:w-3/4 sm:w-3/5 p-1.5 xs:p-1 lg:w-2/3 flex justify-between items-center cursor-pointer rounded-2xl absolute -bottom-4 bg-red-800"
             : "hidden"
         }`}
       >
-        <FaCircleMinus color="white" className="ml-1.5" onClick={handleDecrease}/>
-        <p className=" text-white">{count}</p>
-        <FaCirclePlus color="white" className="mr-1.5" onClick={handleIncrease} />
+        <FaCircleMinus
+          color="white"
+          className="ml-1.5"
+          onClick={handleDecrease}
+        />
+        <p className=" text-white">{counter}</p>
+        <FaCirclePlus
+          color="white"
+          className="mr-1.5"
+          onClick={handleIncrease}
+        />
       </button>
     </>
   );
