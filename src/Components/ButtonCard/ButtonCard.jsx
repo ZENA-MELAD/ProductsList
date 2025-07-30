@@ -6,15 +6,19 @@ import { decrement, increment } from "../../redux/CardSlice";
 
 const ButtonCard = ({ item }) => {
   const disptch = useDispatch();
-const productInStore=useSelector(state=>state.card.items.find(i=>i.idProduct===item.id))
-const counter=productInStore?productInStore.quantity:0
-const isActive=counter>0
+  const productInStore = useSelector((state) =>
+    state.card.items.find((i) => i.idProduct === item.id)
+  );
+  const counter = productInStore ? productInStore.quantity : 0;
+  const isActive = counter > 0;
   const handleClick = () => {
     disptch(
       increment({
         idProduct: item.id,
         descrProduct: item.description,
         priceProduct: item.price,
+        imgProduct: item.image
+,
       })
     );
   };
@@ -24,17 +28,19 @@ const isActive=counter>0
         idProduct: item.id,
         descrProduct: item.description,
         priceProduct: item.price,
+        imgProduct: item.img,
       })
     );
   };
   const handleDecrease = () => {
-      disptch(
-        decrement({
-          idProduct: item.id,
-          descrProduct: item.description,
-          priceProduct: item.price,
-        }))
-  
+    disptch(
+      decrement({
+        idProduct: item.id,
+        descrProduct: item.description,
+        priceProduct: item.price,
+        imgProduct: item.img,
+      })
+    );
   };
 
   return (
@@ -53,7 +59,7 @@ const isActive=counter>0
       </button>
       <button
         className={`${
-         isActive
+          isActive
             ? "w-1/2 xs:w-3/4 sm:w-3/5 p-1.5 xs:p-1 lg:w-2/3 flex justify-between items-center cursor-pointer rounded-2xl absolute -bottom-4 bg-red-800"
             : "hidden"
         }`}

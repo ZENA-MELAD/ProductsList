@@ -27,7 +27,7 @@ export const CardSlice = createSlice({
     },
     decrement: (state, action) => {
       state.count -= 1;
-      state.finalTotal -=action.payload.priceProduct
+      state.finalTotal -= action.payload.priceProduct;
       const product = state.items.find(
         (item) => item.idProduct == action.payload.idProduct
       );
@@ -36,7 +36,6 @@ export const CardSlice = createSlice({
         product.finalPrice -= product.priceProduct;
         if (product.quantity == 0) {
           state.items = state.items.filter((item) => item.quantity != 0);
-          
         }
       }
     },
@@ -54,7 +53,12 @@ export const CardSlice = createSlice({
         (element) => element.idProduct != action.payload
       );
     },
+    newOrder: (state) => {
+      state.count = 0;
+      state.items = [];
+      state.finalTotal = 0;
+    },
   },
 });
-export const { increment, decrement, removeItem } = CardSlice.actions;
+export const { increment, decrement, removeItem, newOrder } = CardSlice.actions;
 export default CardSlice.reducer;

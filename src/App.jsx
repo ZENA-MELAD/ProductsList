@@ -10,7 +10,7 @@ function App() {
           <Card />
         </div>
       </div>
-      <div className="bg-white w-full h-fit p-4.5 ml-0 xs:w-2/5 xs:ml-2.5  xs:p-2.5 md:p-3.5 md:w-1/3 lg:p-4.5 xl:w-[28%] rounded-lg ">
+      <div className="bg-white w-full h-fit p-4.5 ml-0 xs:w-2/5 xs:ml-2.5  xs:p-2.5 md:p-3.5 lg:w-[35%] lg:p-4.5 xl:w-[28%] rounded-lg ">
         <YourCart/>
       </div>
     </div>

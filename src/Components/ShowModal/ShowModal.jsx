@@ -1,23 +1,19 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import Img from "../../assets/Images/icon-order-confirmed.svg";
+import InfoOrder from "../InfoOrder/InfoOrder";
+import StartNewOrder from "../StartNewOrder/StartNewOrder";
 
-const ShowModal = ({ isOpen }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    return () => document.body.classList.remove("overflow-hidden");
-  }, [isOpen]);
+const ShowModal = ({ stateModal }) => {
   return (
-    <div className=" fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-      <div className="bg-white w-[30%] rounded-lg z-50 h-[65vh] p-8">
+    <div className=" fixed inset-0 bg-black/50 flex justify-center items-end xs:flex xs:justify-center xs:items-center z-50">
+      <div className="bg-white overflow-auto max-h-[88vh]  w-full xs:w-[70vw]  xs:rounded-lg  xs:max-w-[400px] lg:max-w-[450px] z-50  p-8">
         <img src={Img} alt="this is image confirm" />
         <p className=" capitalize font-bold text-3xl mt-3">order confirmed</p>
-        <p className="mt-2 text-zinc-500 text-sm">
+        <p className="mt-2.5 text-zinc-500 text-sm">
           We hope you enjoy your food!
         </p>
+        <InfoOrder />
+        <StartNewOrder activeModal={stateModal} />
       </div>
     </div>
   );
