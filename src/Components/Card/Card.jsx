@@ -6,7 +6,7 @@ const Card = ({ allProducts }) => {
     <>
       {allProducts &&
         allProducts.map((item) => (
-          <div key={item.id} className="flex flex-col  items-start">
+          <div key={item.id} className="flex flex-col   items-start">
             <Dessert product={item} />
             <DessertInfo
               name={item.name}
