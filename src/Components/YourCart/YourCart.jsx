@@ -67,11 +67,11 @@ const handleClick=(id)=>{
           <p className=" capitalize  text-sm">order Total</p>
           <p className="font-bold text-2xl xs:text-xl sm:text-2xl">${parseFloat(orderTotal.toFixed(2))}</p>
         </div>
-        <div className={`${countDesserts==0?"hidden":"w-full flex justify-center items-center bg-gray-50 rounded-md py-2 mt-4 xs:px-1.5"}`}>
+        <div className={`${countDesserts==0?"hidden":"w-full flex justify-center items-center bg-pink-50 rounded-md py-2 mt-4 xs:px-1.5"}`}>
           <img src={Img2} className="w-4.5"/>
           <p className="ml-1.5 text-sm xs:text-xs xs:ml-0  md:text-sm md:ml-1.5">This is a <span className="font-medium">carbon-neutral</span> delivery</p>
         </div>
-        <div className={`${countDesserts!=0?"text-xs xs:text-sm text-gray-600 mt-3":"hidden"}`}>Once you confirm, the order cannot be modified</div>
+        <div className={`${countDesserts!=0?"text-xs xs:text-xs md:text-sm text-gray-600 mt-3":"hidden"}`}>Once you confirm, the order cannot be modified</div>
         {countDesserts!=0?<ConfirmOrder/>:<></>}
     </>
   );

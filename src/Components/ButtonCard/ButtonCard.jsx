@@ -47,12 +47,12 @@ const ButtonCard = ({ item }) => {
     <>
       <button
         className="w-1/2 xs:w-3/4 sm:w-3/5 lg:w-2/3  p-1.5 xs:p-1 flex justify-center items-center cursor-pointer bg-white rounded-2xl  border border-zinc-500 absolute 
-      -bottom-4 capitalize text-sm font-medium  xs:text-xs  lg:text-sm
+      -bottom-4 capitalize text-sm font-medium  xs:text-xs  lg:text-xs
        hover:text-red-700  hover:border hover:border-red-700"
         onClick={handleClick}
       >
         <MdAddShoppingCart
-          className="text-red-700  mr-1  xs:mr-0 md:mr-1 "
+          className="text-red-700  mr-1  xs:mr-0  "
           size={18}
         />
         add to cart
@@ -66,12 +66,14 @@ const ButtonCard = ({ item }) => {
       >
         <FaCircleMinus
           color="white"
+          size={19}
           className="ml-1.5"
           onClick={handleDecrease}
         />
         <p className=" text-white">{counter}</p>
         <FaCirclePlus
           color="white"
+          size={19}
           className="mr-1.5"
           onClick={handleIncrease}
         />

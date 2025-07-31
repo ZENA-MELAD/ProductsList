@@ -1,5 +1,5 @@
 @import "tailwindcss";
 @theme{
-    --breakpoint-xs:520px;
+    --breakpoint-xs:490px;
     --color-primary:#c2410c;
 }
